@@ -22,7 +22,6 @@ private static final long serialVersionUID = 1L;
 	private String titulo;
 	
 	@Column(nullable=false, length = 100)
-	@NotBlank(message = "Campo obrigatório")
 	private int ano;
 	
 	@Column(nullable=false, length = 100)
@@ -30,13 +29,11 @@ private static final long serialVersionUID = 1L;
 	private String sinopse;
 	
 	@Column(nullable=false, length = 100)
-	@NotBlank(message = "Campo obrigatório")
 	private int isbn;
 	
-	private int edição;
+	private int edicao;
 	
 	@Column(nullable=false, length = 100)
-	@NotBlank(message = "Campo obrigatório")
 	private double peso;
 
 	public Long getId() {
@@ -79,12 +76,14 @@ private static final long serialVersionUID = 1L;
 		this.isbn = isbn;
 	}
 
-	public int getEdição() {
-		return edição;
+
+
+	public int getEdicao() {
+		return edicao;
 	}
 
-	public void setEdição(int edição) {
-		this.edição = edição;
+	public void setEdicao(int edicao) {
+		this.edicao = edicao;
 	}
 
 	public double getPeso() {

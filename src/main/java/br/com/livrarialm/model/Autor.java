@@ -28,8 +28,8 @@ private static final long serialVersionUID = 1L;
 	@Email
 	private String email;
 	
-	@CPF
-	private byte cpf;
+	
+	private int cpf;
 
 	public Long getId() {
 		return id;
@@ -55,7 +55,7 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 	}
 
-	public byte getCpf() {
+	public int getCpf() {
 		return cpf;
 	}
 

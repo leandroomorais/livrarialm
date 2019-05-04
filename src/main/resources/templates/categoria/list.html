@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Categorias</title>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div layout:fragment="corpo">
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i> Categorias
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nome</th>
+							</tr>
+						</thead>
+				
+						<tbody>
+							<tr th:each="categoria : ${categorias}">
+								<td th:text="${categoria.id}"></td>
+								<td th:text="${categoria.titulo}"></td>
+								<td><div class="btn-group pull-right">
+									   		<a class="btn btn-sm btn-primary" th:href="@{/categoria/edit/{id}(id=${categoria.id})}" >Editar</a>
+									   		<a class="delete btn btn-sm btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.id})}">Excluir</a>
+									   </div></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+
+
+</body>
+</html>

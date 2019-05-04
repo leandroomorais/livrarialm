@@ -1,141 +1,98 @@
-﻿<!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-	name="viewport">
-<title>Bem - Vindo a Livraria LM</title>
-<!-- Favicon-->
-<link rel="icon" th:href="@{/img/favicon.png}" type="image/x-icon">
 
-<!-- Google Fonts -->
-<link
-	th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext}"
-	rel="stylesheet" type="text/css">
-<link
-	th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Livraria LM</title>
+
+<!-- Custom fonts for this template-->
+<link th:href="@{/vendor/fontawesome-free/css/all.min.css}"
 	rel="stylesheet" type="text/css">
 
-<!-- Bootstrap Core Css -->
-<link th:href="@{/plugins/bootstrap/css/bootstrap.css}" rel="stylesheet">
+<!-- Page level plugin CSS-->
+<link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}"
+	rel="stylesheet">
 
-<!-- Waves Effect Css -->
-<link th:href="@{/plugins/node-waves/waves.css}" rel="stylesheet" />
+<!-- Custom styles for this template-->
+<link th:href="@{/css/sb-admin.css}" rel="stylesheet">
 
-<!-- Animation Css -->
-<link th:href="@{/plugins/animate-css/animate.css}" rel="stylesheet" />
-
-<!-- Morris Chart Css-->
-<link th:href="@{/plugins/morrisjs/morris.css}" rel="stylesheet" />
-
-<!-- Custom Css -->
-<link th:href="@{css/style.css}" rel="stylesheet">
-
-<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-<link th:href="@{css/themes/all-themes.css}" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
-	<!-- Page Loader -->
-	<div class="page-loader-wrapper">
-		<div class="loader">
-			<div class="preloader">
-				<div class="spinner-layer pl-red">
-					<div class="circle-clipper left">
-						<div class="circle"></div>
-					</div>
-					<div class="circle-clipper right">
-						<div class="circle"></div>
-					</div>
-				</div>
-			</div>
-			<p>Please wait...</p>
-		</div>
-	</div>
-	<!-- #END# Page Loader -->
+<body id="page-top">
 
+	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-	<!-- #END# Search Bar -->
-	<!-- Top Bar -->
-	<nav class="navbar">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="javascript:void(0);" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar-collapse"
-					aria-expanded="false"></a> <a href="javascript:void(0);"
-					class="bars"></a> <a class="navbar-brand" href="#">LIVRARIA LM</a>
-			</div>
-		</div>
+		<a class="navbar-brand mr-1" href="#">Livraria LM</a>
+
+		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
+		</button>
 	</nav>
 
-	<!-- #Top Bar -->
-	<section>
-		<!-- Left Sidebar -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
 		<div th:replace="fragmentos/menu-esquerdo :: menu-esquerdo">
-
-
-		</div>
-		<!-- #END# Left Sidebar -->
-
-	</section>
-
-	<section class="content">
-		<div class="container-fluid">
-			<div layout:fragment="corpo">
 			
-			
-			</div>
-
-
 		</div>
 
-	</section>
+		<div id="content-wrapper">
 
-	<!-- Jquery Core Js -->
-	<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+			<div class="container-fluid" layout:fragment="corpo"></div>
+			<!-- /.container-fluid -->
 
-	<!-- Bootstrap Core Js -->
-	<script th:src="@{/plugins/bootstrap/js/bootstrap.js}"></script>
+			<!-- Sticky Footer -->
+			<footer class="sticky-footer">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Livraria LM</span>
+					</div>
+				</div>
+			</footer>
 
-	<!-- Select Plugin Js -->
-	<script th:src="@{/plugins/bootstrap-select/js/bootstrap-select.js}"></script>
+		</div>
+		<!-- /.content-wrapper -->
 
-	<!-- Slimscroll Plugin Js -->
-	<script th:src="@{/plugins/jquery-slimscroll/jquery.slimscroll.js}"></script>
+	</div>
+	<!-- /#wrapper -->
 
-	<!-- Waves Effect Plugin Js -->
-	<script th:src="@{/plugins/node-waves/waves.js}"></script>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
 
-	<!-- Jquery CountTo Plugin Js -->
-	<script th:src="@{/plugins/jquery-countto/jquery.countTo.js}"></script>
 
-	<!-- Morris Plugin Js -->
-	<script th:src="@{/plugins/raphael/raphael.min.js}"></script>
-	<script th:src="@{/plugins/morrisjs/morris.js}"></script>
 
-	<!-- ChartJs -->
-	<script th:src="@{/plugins/chartjs/Chart.bundle.js}"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
-	<!-- Flot Charts Plugin Js -->
-	<script th:src="@{/plugins/flot-charts/jquery.flot.js}"></script>
-	<script th:src="@{/plugins/flot-charts/jquery.flot.resize.js}"></script>
-	<script th:src="@{/plugins/flot-charts/jquery.flot.pie.js}"></script>
-	<script th:src="@{/plugins/flot-charts/jquery.flot.categories.js}"></script>
-	<script th:src="@{/plugins/flot-charts/jquery.flot.time.js}"></script>
+	<!-- Core plugin JavaScript-->
+	<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
-	<!-- Sparkline Chart Plugin Js -->
-	<script th:src="@{/plugins/jquery-sparkline/jquery.sparkline.js}"></script>
+	<!-- Page level plugin JavaScript-->
+	<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+	<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+	<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
 
-	<!-- Custom Js -->
-	<script th:src="@{/js/admin.js}"></script>
-	<script th:src="@{/js/pages/index.js}"></script>
+	<!-- Custom scripts for all pages-->
+	<script th:src="@{/js/sb-admin.min.js}"></script>
 
-	<!-- Demo Js -->
-	<script th:src="@{js/demo.js}"></script>
+	<!-- Demo scripts for this page-->
+	<script th:src="@{/js/demo/datatables-demo.js}"></script>
+	<script th:src="@{/js/demo/chart-area-demo.js}"></script>
+
 </body>
 
 </html>

@@ -23,7 +23,7 @@ public class LivroController {
 	
 	@GetMapping("/add")
 	public ModelAndView add(Livro livro) {
-		ModelAndView mv = new ModelAndView("livro/formulario");
+		ModelAndView mv = new ModelAndView("livro/form");
 		mv.addObject("livro", livro);
 		return mv;
 	}

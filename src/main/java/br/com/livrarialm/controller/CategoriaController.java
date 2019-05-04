@@ -21,9 +21,9 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService categoriaService;
 			
-	@RequestMapping("/add")
+	@GetMapping("/add")
 	public ModelAndView add(Categoria cat) {
-		ModelAndView mv = new ModelAndView("categoria/form");
+		ModelAndView mv = new ModelAndView("/categoria/form");
 		mv.addObject("categoria", cat);
 		return mv;
 	}
@@ -57,7 +57,7 @@ public class CategoriaController {
 
 	@GetMapping("/lista")
 	private ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("categoria/lista");
+		ModelAndView mv = new ModelAndView("categoria/list");
         mv.addObject("categorias", categoriaService.listaAll());
         return mv;
 	}
