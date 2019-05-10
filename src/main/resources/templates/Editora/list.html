@@ -2,14 +2,14 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout}">
 <head>
-<title>Autores</title>
+<title>Editoras</title>
 <meta charset="UTF-8" />
 </head>
 <body>
 	<div layout:fragment="corpo">
 		<div class="card mb-3">
 			<div class="card-header">
-				<i class="fas fa-table"></i> Autores
+				<i class="fas fa-table"></i> Editoras
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -19,21 +19,18 @@
 							<tr>
 								<th>ID</th>
 								<th>Nome</th>
-								<th>Email</th>
-								<th>CPF</th>
+								<th>Cidade</th>
 								<th>Ações</th>
 							</tr>
 						</thead>
 				
 						<tbody>
-							<tr th:each="autor : ${autores}">
-								<td th:text="${autor.id}"></td>
-								<td th:text="${autor.nome}"></td>
-								<td th:text="${autor.email}"></td>
-								<td th:text="${autor.cpf}"></td>
+							<tr th:each="editora : ${editoras}">
+								<td th:text="${editora.id}"></td>
+								<td th:text="${editora.nome}"></td>
 								<td><div class="btn-group pull-right">
-									   		<a class="btn btn-sm btn-primary" th:href="@{/autor/edit/{id}(id=${autor.id})}" >Editar</a>
-									   		<a class="delete btn btn-sm btn-danger" th:href="@{/autor/delete/{id}(id=${autor.id})}">Excluir</a>
+									   		<a class="btn btn-sm btn-primary" th:href="@{/editora/edit/{id}(id=${editora.id})}" >Editar</a>
+									   		<a class="delete btn btn-sm btn-danger" th:href="@{/editora/delete/{id}(id=${editora.id})}">Excluir</a>
 									   </div></td>
 							</tr>
 							

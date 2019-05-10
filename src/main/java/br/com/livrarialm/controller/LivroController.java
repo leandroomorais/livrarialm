@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.livrarialm.model.Livro;
+import br.com.livrarialm.repository.EditoraRepository;
+import br.com.livrarialm.service.AutorService;
+import br.com.livrarialm.service.CategoriaService;
+import br.com.livrarialm.service.EditoraService;
 import br.com.livrarialm.service.LivroService;
 
 @Controller
@@ -21,10 +25,24 @@ public class LivroController {
 	@Autowired
 	private LivroService service;
 	
+	@Autowired
+	private AutorService autorService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
+	
+	@Autowired
+	private EditoraService editoraService;
+	
+	
+	
 	@GetMapping("/add")
 	public ModelAndView add(Livro livro) {
-		ModelAndView mv = new ModelAndView("livro/form");
+		ModelAndView mv = new ModelAndView("/livro/form");
 		mv.addObject("livro", livro);
+		mv.addObject("autores", autorService.listaAll());
+		mv.addObject("editoras", editoraService.listaAll());
+		mv.addObject("categorias", categoriaService.listaAll());
 		return mv;
 	}
 	

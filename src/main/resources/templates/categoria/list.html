@@ -19,13 +19,14 @@
 							<tr>
 								<th>ID</th>
 								<th>Nome</th>
+								<th>Ações</th>
 							</tr>
 						</thead>
 				
 						<tbody>
 							<tr th:each="categoria : ${categorias}">
 								<td th:text="${categoria.id}"></td>
-								<td th:text="${categoria.titulo}"></td>
+								<td th:text="${categoria.nome}"></td>
 								<td><div class="btn-group pull-right">
 									   		<a class="btn btn-sm btn-primary" th:href="@{/categoria/edit/{id}(id=${categoria.id})}" >Editar</a>
 									   		<a class="delete btn btn-sm btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.id})}">Excluir</a>

@@ -1,5 +1,6 @@
 package br.com.livrarialm.model;
 
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,11 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+
 @Entity
-public class Categoria implements Serializable {
+public class Editora implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -23,7 +25,11 @@ public class Categoria implements Serializable {
 	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
 	
-	@OneToMany(mappedBy="categoria")
+	@Column(nullable = false, length = 100)
+	@NotBlank(message = "Cidade é uma informação obrigatória.")
+	private String cidade;
+	
+	@OneToMany(mappedBy="editora")
 	private List<Livro> livro;
 
 	public Long getId() {
@@ -43,6 +49,14 @@ public class Categoria implements Serializable {
 	}
 	
 	
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
 	public List<Livro> getLivro() {
 		return livro;

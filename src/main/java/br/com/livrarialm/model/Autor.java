@@ -1,15 +1,15 @@
 package br.com.livrarialm.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
@@ -29,7 +29,10 @@ private static final long serialVersionUID = 1L;
 	private String email;
 	
 	
-	private int cpf;
+	private String cpf;
+	
+	@ManyToMany(mappedBy="autor")
+	private List<Livro> livro;
 
 	public Long getId() {
 		return id;
@@ -55,12 +58,21 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(byte cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+
+	public List<Livro> getLivro() {
+		return livro;
+	}
+
+	public void setLivro(List<Livro> livro) {
+		this.livro = livro;
 	}
 
 	public static long getSerialversionuid() {

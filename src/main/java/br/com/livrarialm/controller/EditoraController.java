@@ -10,54 +10,53 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import br.com.livrarialm.model.Categoria;
-import br.com.livrarialm.service.CategoriaService;
+import br.com.livrarialm.model.Editora;
+import br.com.livrarialm.service.EditoraService;
 
 @Controller
-@RequestMapping("/categoria")
-public class CategoriaController {
+@RequestMapping("/editora")
+public class EditoraController {
 	
 	@Autowired
-	private CategoriaService categoriaService;
+	private EditoraService editoraService;
 			
 	@GetMapping("/add")
-	public ModelAndView add(Categoria cat) {
-		ModelAndView mv = new ModelAndView("/categoria/form");
-		mv.addObject("categoria", cat);
+	public ModelAndView add(Editora editora) {
+		ModelAndView mv = new ModelAndView("/editora/form");
+		mv.addObject("editora", editora);
 		return mv;
 	}
 		
 	@GetMapping("/edit/{id}")
 	private ModelAndView edit( @PathVariable("id") Long id) {
-		Categoria cat = categoriaService.findOne(id);
-		return add(cat);
+		Editora editora = editoraService.findOne(id);
+		return add(editora);
 	}
 	
 
 	@GetMapping("/delete/{id}")
 	private ModelAndView delete( @PathVariable("id") Long id) {
-		categoriaService.delete(id);
+		editoraService.delete(id);
 		return findAll();
 	}
 
 
 	
 	@PostMapping("/save")
-    public ModelAndView save(@Valid Categoria cat, BindingResult result) {
+    public ModelAndView save(@Valid Editora editora, BindingResult result) {
 		 
 		if(result.hasErrors()) {
-			return add(cat);
+			return add(editora);
 	    }
-		categoriaService.cadastrar(cat);
-		ModelAndView mv =findAll(); 
+		editoraService.cadastrar(editora);
+		ModelAndView mv = findAll(); 
 		return mv;
     }
 
 	@GetMapping("/lista")
 	private ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("categoria/list");
-        mv.addObject("categorias", categoriaService.listaAll());
+		ModelAndView mv = new ModelAndView("editora/list");
+        mv.addObject("editoras", editoraService.listaAll());
         return mv;
 	}
 

@@ -33,22 +33,25 @@
 						</div>
 					</div>
 
-					<div class="form-group" th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="text" id="titulo" class="form-control"
-								placeholder="Titulo" required="required" th:field="*{titulo}">
-							<label for="titulo">Titulo</label>
+								placeholder="Titulo" th:field="*{titulo}"> <label
+								for="titulo">Titulo</label>
 						</div>
 					</div>
 
-					<div class="form-group" th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="number" id="ano" class="form-control"
-								placeholder="Ano" required="required" th:field="*{ano}">
-							<label for="ano">Ano</label>
+								placeholder="Ano" th:field="*{ano}"> <label for="ano">Ano</label>
 						</div>
 					</div>
-					<div class="form-group" th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="text" id="sinopse" class="form-control"
 								placeholder="Sinopse" required="required" th:field="*{sinopse}">
@@ -56,7 +59,8 @@
 						</div>
 					</div>
 
-					<div class="form-group" th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="number" id="isbn" class="form-control"
 								placeholder="ISBN" required="required" th:field="*{isbn}">
@@ -64,7 +68,8 @@
 						</div>
 					</div>
 
-					<div class="form-group" th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="number" id="edicao" class="form-control"
 								placeholder="Edição" required="required" th:field="*{edicao}">
@@ -72,7 +77,8 @@
 						</div>
 					</div>
 
-					<div class="form-group" th:classappend="${#fields.hasErrors('peso')}? 'has-error'">
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('peso')}? 'has-error'">
 						<div class="form-label-group">
 							<input type="text" id="peso" class="form-control"
 								placeholder="Peso" required="required" th:field="*{peso}">
@@ -80,11 +86,51 @@
 						</div>
 					</div>
 
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('preco')}? 'has-error'">
+						<div class="form-label-group">
+							<input type="text" id="preco" class="form-control"
+								placeholder="Preço" required="required" th:field="*{preco}">
+							<label for="preco">Preço</label>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="form-label-group">
+							<select th:field="*{editora}" class="form-control">
+								<option value="">Selecione a Editora</option>
+								<option th:each="editora : ${editora}" th:value="${editora.id}"
+									th:text="${editora.nome}"></option>
+							</select>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="form-label-group">
+							<select th:field="*{categoria}" class="form-control">
+								<option value="">Selecione a Categoria</option>
+								<option th:each="categoria : ${categorias}"
+									th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<div class="form-label-group">
+							<select th:field="*{autor}" class="form-control">
+								<option value="">Selecione o Autor</option>
+								<option th:each="autor : ${autores}" th:value="${autor.id}"
+									th:text="${autor.nome}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
 
 				</div>
 			</div>
-
-			<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
 		</form>
 	</div>
 
