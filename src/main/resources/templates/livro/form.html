@@ -1,140 +1,161 @@
-<!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
+<html lang="pt" layout:decorate="~{layout-administrador}">
 <head>
-<title>Cadastrar Livros</title>
-<meta charset="UTF-8" />
+<meta charset="utf-8">
+<title>Livraria LM - Cadastrar Livros</title>
 </head>
 <body>
-	<div layout:fragment="corpo">
-		<div class="form-group">
-			<a>Cadastro de Livros</a>
-		</div>
+	<!-- SECTION -->
+	<div class="section" layout:fragment="corpo">
+		<!-- container -->
+		<div class="container" align="center">
+			<!-- row -->
+			<div class="row">
 
-		<form method="post" th:object="${livro}" th:action="@{/livro/save}">
-			<div class="form-group">
-				<div class="form-label-group">
-
-					<input id="id" name="id" type="hidden" th:field="*{id}"
-						th:value="*{id}">
-
-					<div class="form-group row">
-						<div class="alert alert-danger alert-dismissible fade show"
-							role="alert" th:if="${#fields.hasAnyErrors()}">
-
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-
-							<div th:each="detailedError : ${#fields.detailedErrors()}">
-								<strong th:text="${detailedError.message}"> </strong>
-							</div>
+				<div class="col-md-12" align="center">
+					<!-- Billing Details -->
+					<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Cadastro de Livros</h3>
 						</div>
-					</div>
+						<div class="col-md-12">
+							<form method="post" th:object="${livro}"
+								th:action="@{/livro/save}" enctype="multipart/form-data">
+
+								<!-- Input responsável por guardar o ID -->
+								<input id="id" name="id" type="hidden" th:field="*{id}"
+									th:value="*{id}">
+
+								<!-- DIV de Alerta de Erros -->
+								<div class="alert alert-danger alert-dismissible" role="alert"
+									th:if="${#fields.hasAnyErrors()}">
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<div th:each="detailedError : ${#fields.detailedErrors()}">
+										<strong>Atenção!</strong> <a
+											th:text="${detailedError.message}"></a>
+									</div>
+								</div>
 
 
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="titulo" class="form-control"
-								placeholder="Titulo" th:field="*{titulo}"> <label
-								for="titulo">Titulo</label>
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
+										<input class="input" type="text" placeholder="Titulo"
+											th:field="*{titulo}">
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('url')}? 'has-error'">
+										<input class="input" type="text" placeholder="URL Imagem do Livro"
+											th:field="*{url}">
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
+										<input class="input" type="datetime" placeholder="Ano"
+											th:field="*{ano}">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
+										<input class="input" placeholder="Sinopse" type="text"
+											th:field="*{sinopse}">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
+										<input class="input" placeholder="ISBN" type="text"
+											th:field="*{isbn}">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
+										<input class="input" placeholder="Edição" type="text"
+											th:field="*{edicao}">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="input" placeholder="Peso em KG" type="text"
+											required="required" th:field="*{peso}">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="input" placeholder="Preço em R$" type="text"
+											required="required" th:field="*{preco}" name="valor"
+											onKeyPress="moedaParaNumero(valor)">
+									</div>
+								</div>
+
+
+
+								<div class="col-md-8">
+									<div class="form-group">
+										<select th:field="*{editora}" class="input">
+											<option value="">Selecione a Editora</option>
+											<option th:each="editora : ${editoras}"
+												th:value="${editora.id}" th:text="${editora.nome}"></option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-8">
+									<div class="form-group">
+										<select th:field="*{editora}" class="input">
+											<option value="">Selecione a Gategoria</option>
+											<option th:each="categoria : ${categorias}"
+												th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-8" align="left">
+									<label>Selecione o(s) autor(es)</label>
+									<div class="form-group">
+										<div class="scrollmenu">
+											<div th:each="autor : ${autores}">
+												<input type="checkbox" th:field="*{autor}"
+													th:value="${autor.id}"><span th:text="${'  '}"></span><span
+													th:text="${autor.nome}"></span><br>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<button type="submit" class="primary-btn cta-btn">Cadastrar</button>
+									</div>
+								</div>
+							</form>
 						</div>
-					</div>
 
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="ano" class="form-control"
-								placeholder="Ano" th:field="*{ano}"> <label for="ano">Ano</label>
-						</div>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="sinopse" class="form-control"
-								placeholder="Sinopse" required="required" th:field="*{sinopse}">
-							<label for="sinopse">Sinopse</label>
-						</div>
-					</div>
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="isbn" class="form-control"
-								placeholder="ISBN" required="required" th:field="*{isbn}">
-							<label for="isbn">ISBN</label>
-						</div>
-					</div>
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="edicao" class="form-control"
-								placeholder="Edição" required="required" th:field="*{edicao}">
-							<label for="edicao">Edição</label>
-						</div>
-					</div>
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('peso')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="peso" class="form-control"
-								placeholder="Peso" required="required" th:field="*{peso}">
-							<label for="peso">Peso</label>
-						</div>
-					</div>
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('preco')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="preco" class="form-control"
-								placeholder="Preço" required="required" th:field="*{preco}">
-							<label for="preco">Preço</label>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<div class="form-label-group">
-							<select th:field="*{editora}" class="form-control">
-								<option value="">Selecione a Editora</option>
-								<option th:each="editora : ${editora}" th:value="${editora.id}"
-									th:text="${editora.nome}"></option>
-							</select>
-
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="form-label-group">
-							<select th:field="*{categoria}" class="form-control">
-								<option value="">Selecione a Categoria</option>
-								<option th:each="categoria : ${categorias}"
-									th:value="${categoria.id}" th:text="${categoria.nome}"></option>
-							</select>
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<div class="form-label-group">
-							<select th:field="*{autor}" class="form-control">
-								<option value="">Selecione o Autor</option>
-								<option th:each="autor : ${autores}" th:value="${autor.id}"
-									th:text="${autor.nome}"></option>
-							</select>
-						</div>
-					</div>
-					
-					<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
-
 				</div>
 			</div>
-		</form>
+		</div>
 	</div>
 
+	<!-- /Billing Details -->
 
 </body>
 </html>
-

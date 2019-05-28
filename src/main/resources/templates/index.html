@@ -1,16 +1,57 @@
 <!DOCTYPE html>
-<html layout:decorate="~{'layout'}">
-
+<html lang="pt" layout:decorate="~{layout-index}">
 <head>
 <meta charset="utf-8">
-<title>Livraria LM</title>
 </head>
-
 <body>
+	<!-- STORE -->
+	<div layout:fragment="corpo">
+
+		<div id="store" class="col-md-12">
+			<div class="row">
+				<div th:each="livro : ${livros}">
+				<form action="@{/savepedido}">
+					<!-- product -->
+					<div class="col-md-2 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img th:src="${livro.url}" alt="">
+								</div>
+								<div class="product-body">
+									<h3 class="product-name">
+										<a href="#" id="livro"><span th:text="${livro.titulo}"></span></a>
+									</h3>
+									<h4 class="product-price">
+										<span>R$ <span id="preco" th:text="${livro.preco}"></span></span>
+									</h4>
+
+									<div class="product-btns">
+										<button class="quick-view">
+											<i class="fa fa-eye"></i><span class="tooltipp">Detalhes</span>
+										</button>
+									</div>
+								</div>
+							
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn" >
+										<i class="fa fa-shopping-cart"></i><a class="branco" th:href="@{/save?quantidade=1&valorTotal=&livro={id}&_livro=on (id=${livro.id}) }" >Adicionar</a>
+									</button>
+								</div>
+							</div>
+					</div>
+					</form>
+					<!-- /product -->
+		
+				</div>
+			</div>
+		</div>
+
+	</div>
 	
 
 
 </body>
 
-</html>
 
+
+</html>

@@ -1,53 +1,73 @@
-<!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
+<html lang="pt" layout:decorate="~{layout-administrador}">
 <head>
-<title>Spring-Boot Básico</title>
-<meta charset="UTF-8" />
+<meta charset="utf-8">
+<title>Livraria LM - Livros</title>
 </head>
 <body>
-	<div layout:fragment="corpo">
-		<div class="card mb-3">
-			<div class="card-header">
-				<i class="fas fa-table"></i> Livros cadastrados
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Titulo</th>
-								<th>Ano</th>
-								<th>ISBN</th>
-								<th>Edição</th>
-								<th>Peso</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-				
-						<tbody>
-							<tr th:each="livro : ${livros}">
-								<td th:text="${livro.id}"></td>
-								<td th:text="${livro.titulo}"></td>
-								<td th:text="${livro.ano}"></td>
-								<td th:text="${livro.isbn}"></td>
-								<td th:text="${livro.edicao}"></td>
-								<td th:text="${livro.peso}"></td>
-								<td><div class="btn-group pull-right">
-									   		<a class="btn btn-sm btn-primary" th:href="@{/livro/edit/{id}(id=${livro.id})}" >Editar</a>
-									   		<a class="delete btn btn-sm btn-danger" th:href="@{/livro/delete/{id}(id=${livro.id})}">Excluir</a>
-									   </div></td>
-							</tr>
-							
-						</tbody>
-					</table>
+	<div class="section" layout:fragment="corpo">
+		<!-- container -->
+		<div class="container" align="center">
+			<!-- row -->
+			<div class="row">
+
+				<div  align="center">
+					<!-- Billing Details -->
+					<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Lista de Livros</h3>
+						</div>
+						<!-- DIV de Alerta de Sucessos -->
+						<div class="alert alert-success alert-dismissible" role="alert"
+							th:if="${success}">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+							<strong>Sucesso!</strong> <a th:text="${success}"></a>
+
+						</div>
+						<div class="col-md-10">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">Titulo</th>
+										<th scope="col">ISBN</th>
+										<th scope="col">Preço</th>
+										<th scope="col">Peso</th>
+										<th scope="col">Ações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="livro : ${livros}">
+										<td scope="row" th:text="${livro.id}"></td>
+										<td th:text="${livro.titulo}"></td>
+										<td th:text="${livro.isbn}"></td>
+										<td th:text="${livro.preco}"></td>
+										<td th:text="${livro.peso}"></td>
+										<td><a class="btn btn-primary"
+											th:href="@{/livro/edit/{id} (id=${livro.id})}">Editar</a> <a
+											class="btn btn-danger"
+											th:href="@{/livro/delete/{id} (id=${livro.id})}">Excluir</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="col-md-2" align="center">
+							<hr>
+							<a class="primary-btn cta-btn" th:href="@{/livro/add}"><i class="fa fa-plus"> Novo</i></a>
+						</div>
+					</div>
+
 				</div>
 			</div>
-		
 		</div>
 	</div>
+
+
+
 
 
 </body>

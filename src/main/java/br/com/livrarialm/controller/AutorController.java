@@ -47,7 +47,7 @@ public class AutorController {
 		}
 		
 		autorService.cadastrar(autor);
-		ModelAndView mv = findAll();
+		ModelAndView mv = findAll().addObject("success","O autor foi cadastrado!");
 		return mv;
 	}
 	

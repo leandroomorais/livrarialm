@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 
 @Entity
 public class Autor implements Serializable {
@@ -22,13 +24,17 @@ private static final long serialVersionUID = 1L;
 	private Long id;
 	
 	@Column(nullable = false, length = 100)
-	@NotBlank(message = "Campo obrigatório")
+	@NotBlank(message = "Nome é um campo obrigatório")
 	private String nome;
 	
+	@Column(nullable = false, length = 100)
+	@NotBlank(message = "Email é um campo obrigatório")
 	@Email
 	private String email;
 	
-	
+	@Column(nullable = false, length = 100)
+	@NotBlank(message = "CPF é um campo obrigatório")
+	@CPF
 	private String cpf;
 	
 	@ManyToMany(mappedBy="autor")

@@ -49,7 +49,7 @@ public class EditoraController {
 			return add(editora);
 	    }
 		editoraService.cadastrar(editora);
-		ModelAndView mv = findAll(); 
+		ModelAndView mv = findAll().addObject("success","A Editora foi cadastrada!"); 
 		return mv;
     }
 

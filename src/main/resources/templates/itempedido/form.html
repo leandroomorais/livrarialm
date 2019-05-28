@@ -1,0 +1,74 @@
+<html lang="pt" layout:decorate="~{layout-administrador}">
+<head>
+<meta charset="utf-8">
+<title>Livraria LM - Cadastrar Categorias</title>
+</head>
+<body>
+	<!-- SECTION -->
+	<div class="section" layout:fragment="corpo">
+		<!-- container -->
+		<div class="container" align="center">
+			<!-- row -->
+			<div class="row">
+
+				<div class="col-md-12" align="center">
+					<!-- Billing Details -->
+					<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Item Pedido</h3>
+						</div>
+						<div class="col-md-12">
+							<form method="post" th:object="${itemPedido}"
+								th:action="@{/item-pedido/save}">
+
+								<!-- Input responsável por guardar o ID -->
+								<input id="id" name="id" type="hidden" th:field="*{id}"
+									th:value="*{id}">
+
+								<!-- DIV de Alerta de Erros -->
+								<div class="alert alert-danger alert-dismissible" role="alert"
+									th:if="${#fields.hasAnyErrors()}">
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<div th:each="detailedError : ${#fields.detailedErrors()}">
+										<strong>Atenção!</strong> <a
+											th:text="${detailedError.message}"></a>
+									</div>
+								</div>
+								
+								<input class="input" type="text" placeholder="Quantidade"
+											th:field="*{quantidade}" value="5" hidden="">
+								<input class="input" type="text" placeholder="Quantidade"
+											th:field="*{valorTotal}" value="1994" hidden="">
+						
+								<input class="input" type="text"  th:field="*{livro}" value="14" hidden="">
+													
+								
+								
+											
+								
+
+
+								
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<button type="submit" class="primary-btn cta-btn">Cadastrar</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- /Billing Details -->
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout-index}">
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+	<!-- STORE -->
+	<div layout:fragment="corpo">
+		<form th:action="@{/savepedido}" th:object="${pedido}" method="get">
+			<!-- Input responsável por guardar o ID -->
+			<input id="id" name="id" type="hidden" th:field="*{id}"
+				th:value="*{id}">
+
+
+			<button type="submit"></button>
+		</form>
+
+
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout-index}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+	<!-- Order Details -->
+	<div layout:fragment="corpo" class="section">
+		<div class="order-summary">
+			<div class="order-col">
+				<div>
+					<strong>LIVROS</strong>
+				</div>
+
+			</div>
+			<div th:each="itempedido : ${itempedidos}">
+
+				<div class="order-summary">
+					<div class="order-products">
+						<div class="product-body">
+							<h3 class="product-name">
+								<th:block th:each="livro : ${itempedido.livro}">
+									<span th:text=${livro.titulo}></span>
+								</th:block>
+							</h3>
+							<th:block th:each="livro : ${itempedido.livro}">
+								<h4 class="product-price">
+									Valor: R$ <span class="qty" th:text=${livro.preco}></span>
+								</h4>
+							</th:block>
+							<h4 class="product-price">
+								Quantidade: <span class="qty" th:text=${itempedido.quantidade}></span>
+							</h4>
+							<div>
+								<div class="order-total">
+									<a class="primary-btn"
+										th:href="@{/deletecar/{id} (id=${itempedido.id})}"><i
+										class="fa fa-trash"></i></a>
+								</div>
+								<hr>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="primary-btn order-submit">
+				<a th:href="@{/item-pedido/comprar}" class="branco">Confirmar a compra</a>
+			</button>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package br.com.livrarialm.controller;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.livrarialm.model.Livro;
-import br.com.livrarialm.repository.EditoraRepository;
 import br.com.livrarialm.service.AutorService;
 import br.com.livrarialm.service.CategoriaService;
 import br.com.livrarialm.service.EditoraService;
@@ -21,6 +21,7 @@ import br.com.livrarialm.service.LivroService;
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
+	
 	
 	@Autowired
 	private LivroService service;
@@ -35,23 +36,17 @@ public class LivroController {
 	private EditoraService editoraService;
 	
 	
-	
 	@GetMapping("/add")
-	public ModelAndView add(Livro livro) {
+	public ModelAndView add(Livro livro){
 		ModelAndView mv = new ModelAndView("/livro/form");
 		mv.addObject("livro", livro);
 		mv.addObject("autores", autorService.listaAll());
 		mv.addObject("editoras", editoraService.listaAll());
-		mv.addObject("categorias", categoriaService.listaAll());
+		mv.addObject("categorias", categoriaService.listaAll());		
 		return mv;
 	}
 	
-	@GetMapping("/edit/{id}")
-	private ModelAndView edit(@PathVariable("id") Long id) {
-		Livro livro = service.findOne(id);
-		return add(livro);
-	}
-	
+
 	@GetMapping("/delete/{id}")
 	private ModelAndView delete(@PathVariable("id") Long id) {
 		service.delete(id);
@@ -66,6 +61,7 @@ public class LivroController {
 		
 		service.cadastrar(livro);
 		ModelAndView mv = findAll();
+		mv.addObject("success","O Livro foi cadastrado!");
 		return mv;
 	}
 	

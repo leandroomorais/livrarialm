@@ -1,0 +1,146 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<!-- MAIN HEADER -->
+<div id="header" th:fragment="main-header">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- LOGO -->
+			<div class="col-md-3">
+				<div class="header-logo">
+					<a href="#" class="logo"> <img th:src="@{/img/logo.png}" alt="">
+					</a>
+				</div>
+			</div>
+			<!-- /LOGO -->
+
+			<!-- SEARCH BAR -->
+			<div class="col-md-6">
+				<div class="header-search"></div>
+			</div>
+			<!-- /SEARCH BAR -->
+
+			<!-- ACCOUNT -->
+			<div class="col-md-3 clearfix">
+				<div class="header-ctn">
+
+					<!-- Cart -->
+					<div class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"
+							aria-expanded="true"> <i class="fa fa-shopping-cart"></i> <span>Carrinho</span>
+
+						</a>
+						<div class="cart-dropdown">
+							<div class="cart-list">
+								<div th:each="itempedido : ${itempedidos}">
+									<div class="product-widget">
+										<th:block th:each="livro : ${itempedido.livro}">
+										<div class="product-img">
+											<img th:src="${livro.url}" alt="">
+										</div>
+										</th:block>
+
+
+										<div class="product-body">
+											<h3 class="product-name">
+												<th:block th:each="livro : ${itempedido.livro}">
+													<span th:text=${livro.titulo}></span>
+												</th:block>
+											</h3>
+											<th:block th:each="livro : ${itempedido.livro}">
+												<h4 class="product-price">
+													R$ <span class="qty" id="preco" th:text=${livro.preco}></span>
+												</h4>
+											</th:block>
+											<div class="delete">
+												<a class="branco"
+													th:href="@{/delete/{id} (id=${itempedido.id})}">x</a></i>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="cart-summary">
+								<small></small>
+							</div>
+
+							<div class="cart-btns">
+								<a th:href="@{/lista}">Ver Carrinho</a><a><i
+									class="fa fa-shopping-cart"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /Cart -->
+
+					<!-- Wishlist -->
+					<div>
+						<a th:href="@{/entrar}"> <i class="fa fa-sign-in"></i> <span>Entrar</span>
+						</a>
+					</div>
+					<!-- /Wishlist -->
+
+					<!-- Menu Toogle -->
+					<div class="menu-toggle">
+						<a href="#"> <i class="fa fa-bars"></i> <span>Menu</span>
+						</a>
+					</div>
+					<!-- /Menu Toogle -->
+				</div>
+			</div>
+			<!-- /ACCOUNT -->
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+
+
+<!-- MAIN HEADER LOGIN -->
+<div id="header" th:fragment="login-header">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- LOGO -->
+			<div class="col-md-3">
+				<div class="header-logo">
+					<a href="#" class="logo"> <img th:src="@{/img/logo.png}" alt="">
+					</a>
+				</div>
+			</div>
+			<!-- /LOGO -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+
+<!-- MAIN HEADER LOGIN -->
+<div id="header" th:fragment="administrador-header">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- LOGO -->
+			<div class="col-md-3">
+				<div class="header-logo">
+					<a href="#" class="logo"> <img th:src="@{/img/logo.png}" alt="">
+					</a>
+				</div>
+			</div>
+			<!-- /LOGO -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+</html>
+<!-- /MAIN HEADER -->

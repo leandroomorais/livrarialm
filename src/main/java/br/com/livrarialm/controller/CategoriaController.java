@@ -50,7 +50,7 @@ public class CategoriaController {
 			return add(cat);
 	    }
 		categoriaService.cadastrar(cat);
-		ModelAndView mv =findAll(); 
+		ModelAndView mv =findAll().addObject("success","A categoria foi cadastrada!"); 
 		return mv;
     }
 

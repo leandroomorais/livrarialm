@@ -1,49 +1,71 @@
-<!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
+<html lang="pt" layout:decorate="~{layout-administrador}">
 <head>
-<title>Autores</title>
-<meta charset="UTF-8" />
+<meta charset="utf-8">
+<title>Livraria LM - Autores</title>
 </head>
 <body>
-	<div layout:fragment="corpo">
-		<div class="card mb-3">
-			<div class="card-header">
-				<i class="fas fa-table"></i> Autores
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Nome</th>
-								<th>Email</th>
-								<th>CPF</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-				
-						<tbody>
-							<tr th:each="autor : ${autores}">
-								<td th:text="${autor.id}"></td>
-								<td th:text="${autor.nome}"></td>
-								<td th:text="${autor.email}"></td>
-								<td th:text="${autor.cpf}"></td>
-								<td><div class="btn-group pull-right">
-									   		<a class="btn btn-sm btn-primary" th:href="@{/autor/edit/{id}(id=${autor.id})}" >Editar</a>
-									   		<a class="delete btn btn-sm btn-danger" th:href="@{/autor/delete/{id}(id=${autor.id})}">Excluir</a>
-									   </div></td>
-							</tr>
-							
-						</tbody>
-					</table>
+	<div class="section" layout:fragment="corpo">
+		<!-- container -->
+		<div class="container" align="center">
+			<!-- row -->
+			<div class="row">
+
+				<div  align="center">
+					<!-- Billing Details -->
+					<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Lista de Autores</h3>
+						</div>
+						<!-- DIV de Alerta de Sucessos -->
+						<div class="alert alert-success alert-dismissible" role="alert"
+							th:if="${success}">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+							<strong>Sucesso!</strong> <a th:text="${success}"></a>
+
+						</div>
+						<div class="col-md-10">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">Nome</th>
+										<th scope="col">Email</th>
+										<th scope="col">CPF</th>
+										<th scope="col">Ações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="autor : ${autores}">
+										<td scope="row" th:text="${autor.id}"></td>
+										<td th:text="${autor.nome}"></td>
+										<td th:text="${autor.email}"></td>
+										<td th:text="${autor.cpf}"></td>
+										<td><a class="btn btn-primary"
+											th:href="@{/autor/edit/{id} (id=${autor.id})}">Editar</a> <a
+											class="btn btn-danger"
+											th:href="@{/autor/delete/{id} (id=${autor.id})}">Excluir</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="col-md-2" align="center">
+							<hr>
+							<a class="primary-btn cta-btn" th:href="@{/autor/add}"><i class="fa fa-plus"> Novo</i></a>
+						</div>
+					</div>
+
 				</div>
 			</div>
-		
 		</div>
 	</div>
+
+
+
 
 
 </body>

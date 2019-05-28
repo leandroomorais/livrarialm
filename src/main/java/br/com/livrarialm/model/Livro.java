@@ -3,6 +3,7 @@ package br.com.livrarialm.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 
@@ -26,20 +28,28 @@ private static final long serialVersionUID = 1L;
 	@NotBlank(message = "Titulo é uma informação obrigatória")
 	private String titulo;
 	
-	@Column(nullable=false, length = 100)
-	private int ano;
+	@Column(nullable=false, length = 500)
+	@NotBlank(message = "URL da Imagem é uma informação obrigatória")
+	private String url;
 	
 	@Column(nullable=false, length = 100)
+	@NotBlank(message = "Ano é uma informação obrigatória")
+	private String ano;
+	
+	@Column(nullable=false, length = 1000)
 	@NotBlank(message = "Sinopse é uma informação obrigatória")
 	private String sinopse;
 	
 	@Column(nullable=false, length = 100)
-	private int isbn;
-	
-	private int edicao;
+	@NotBlank(message = "ISBN é uma informação obrigatória")
+	private String isbn;
 	
 	@Column(nullable=false, length = 100)
-	private double peso;
+	@NotBlank(message = "Edição é uma informação obrigatória")
+	private String edicao;
+	
+	@Column(nullable=false, length = 100)
+	private String peso;
 	
 	@Column(nullable=false, length = 100)
 	private double preco;
@@ -56,6 +66,9 @@ private static final long serialVersionUID = 1L;
 	@JoinTable(name="autor_id")
 	public List<Autor> autor;
 
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	public Imagem imagem;
 
 	public Long getId() {
 		return id;
@@ -73,11 +86,11 @@ private static final long serialVersionUID = 1L;
 		this.titulo = titulo;
 	}
 
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 
@@ -89,30 +102,29 @@ private static final long serialVersionUID = 1L;
 		this.sinopse = sinopse;
 	}
 
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
-	public int getEdicao() {
+	public String getEdicao() {
 		return edicao;
 	}
 
-	public void setEdicao(int edicao) {
+	public void setEdicao(String edicao) {
 		this.edicao = edicao;
 	}
 
-	public double getPeso() {
+	public String getPeso() {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(String peso) {
 		this.peso = peso;
 	}
-
 
 	public double getPreco() {
 		return preco;
@@ -122,6 +134,7 @@ private static final long serialVersionUID = 1L;
 		this.preco = preco;
 	}
 	
+
 	public Editora getEditora() {
 		return editora;
 	}
@@ -138,6 +151,7 @@ private static final long serialVersionUID = 1L;
 		this.categoria = categoria;
 	}
 
+
 	public List<Autor> getAutor() {
 		return autor;
 	}
@@ -145,13 +159,26 @@ private static final long serialVersionUID = 1L;
 	public void setAutor(List<Autor> autor) {
 		this.autor = autor;
 	}
-	
-	
+
+	public Imagem getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(Imagem imagem) {
+		this.imagem = imagem;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 
 }
