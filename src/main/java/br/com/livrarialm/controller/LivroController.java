@@ -53,6 +53,12 @@ public class LivroController {
 		return findAll();
 	}
 	
+	@GetMapping("/edit/{id}")
+	private ModelAndView edite(@PathVariable("id") Long id) {
+		Livro livro = service.findOne(id);
+		return add(livro);
+	}
+	
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Livro livro, BindingResult result) {
 		if(result.hasErrors()) {
@@ -71,6 +77,15 @@ public class LivroController {
 		mv.addObject("livros", service.listaAll());
 		return mv;
 	}
+	
+	@GetMapping("/detalhes/{id}")
+	public ModelAndView detalhes(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("livro/detalhes");
+		mv.addObject("livro", service.findOne(id));
+		mv.addObject("categoria",categoriaService.findOne(id));
+		return mv;
+	}
+	
 	
 	
 	

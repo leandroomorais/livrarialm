@@ -1,6 +1,7 @@
 package br.com.livrarialm.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 
 @Entity
@@ -51,8 +55,9 @@ private static final long serialVersionUID = 1L;
 	@Column(nullable=false, length = 100)
 	private String peso;
 	
-	@Column(nullable=false, length = 100)
-	private double preco;
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
+	@Column(nullable=false, length = 10)
+	private BigDecimal preco;
 	
 	@ManyToOne
 	@JoinTable(name="editora_id")
@@ -65,10 +70,6 @@ private static final long serialVersionUID = 1L;
 	@ManyToMany
 	@JoinTable(name="autor_id")
 	public List<Autor> autor;
-
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	public Imagem imagem;
 
 	public Long getId() {
 		return id;
@@ -126,14 +127,13 @@ private static final long serialVersionUID = 1L;
 		this.peso = peso;
 	}
 
-	public double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	
 
 	public Editora getEditora() {
 		return editora;
@@ -158,14 +158,6 @@ private static final long serialVersionUID = 1L;
 
 	public void setAutor(List<Autor> autor) {
 		this.autor = autor;
-	}
-
-	public Imagem getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(Imagem imagem) {
-		this.imagem = imagem;
 	}
 
 	public static long getSerialversionuid() {

@@ -38,9 +38,9 @@
 								<div th:each="itempedido : ${itempedidos}">
 									<div class="product-widget">
 										<th:block th:each="livro : ${itempedido.livro}">
-										<div class="product-img">
-											<img th:src="${livro.url}" alt="">
-										</div>
+											<div class="product-img">
+												<img th:src="${livro.url}" alt="">
+											</div>
 										</th:block>
 
 
@@ -80,10 +80,12 @@
 
 					<!-- Wishlist -->
 					<div>
-						<a th:href="@{/entrar}"> <i class="fa fa-sign-in"></i> <span>Entrar</span>
+						<a href="#"> <i class="fa fa-heart-o"></i> <span>Desejos</span>
+							<div class="qty">2</div>
 						</a>
 					</div>
 					<!-- /Wishlist -->
+					
 
 					<!-- Menu Toogle -->
 					<div class="menu-toggle">

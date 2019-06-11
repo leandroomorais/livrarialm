@@ -67,8 +67,9 @@
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
-										<input class="input" placeholder="Sinopse" type="text"
-											th:field="*{sinopse}">
+										<textarea class="input" rows="2" cols="50" placeholder="Digite a Sinopse do Livro aqui" th:field="*{sinopse}"></textarea>
+										<!-- <input class="input" placeholder="Sinopse" type="text"
+											th:field="*{sinopse}"> -->
 									</div>
 								</div>
 
@@ -99,7 +100,7 @@
 									<div class="form-group">
 										<input class="input" placeholder="Preço em R$" type="text"
 											required="required" th:field="*{preco}" name="valor"
-											onKeyPress="moedaParaNumero(valor)">
+											onKeyPress="return(moeda(this,'.',',',event))">
 									</div>
 								</div>
 

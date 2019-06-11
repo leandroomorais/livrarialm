@@ -50,15 +50,16 @@ public class IndexController {
 	private UsuarioService usuarioService; 
 	
 
-	@RequestMapping("/")
-	public ModelAndView home(Livro livro, ItemPedido itemPedido, Pedido pedido) {
-		ModelAndView mv = new ModelAndView("index");
+	@RequestMapping("/livraria")
+	public ModelAndView home(Livro livro, ItemPedido itemPedido, Pedido pedido, Usuario usuario) {
+		ModelAndView mv = new ModelAndView("index-loja");
 		mv.addObject("livro", livro);
 		mv.addObject("livros", livroService.listaAll());
 		mv.addObject("itempedido", itemPedido);
 		mv.addObject("itempedidos", itemPedidoService.listaAll());
 		mv.addObject("pedido", pedido);
 		mv.addObject("pedidos", pedidoService.listaAll());
+		mv.addObject("usuario", usuario);
 		
 		return mv;
 		
@@ -71,60 +72,7 @@ public class IndexController {
 		return mv;
 	}
 	
-	@GetMapping("/detalhes/{id}")
-	public ModelAndView detalhes(@PathVariable("id") Long id) {
-		ModelAndView mv = new ModelAndView("detalhes");
-		mv.addObject("livro", livroService.findOne(id));
-		mv.addObject("categoria",categoriaService.findOne(id));
-		return mv;
-	}
-	
-	//Métodos carrinho
-	
-	
-	@GetMapping("/add")
-	public ModelAndView add(ItemPedido itemPedido){
-		ModelAndView mv = new ModelAndView("/itempedido/form");
-		mv.addObject("livros", livroService.listaAll());
-		mv.addObject("itemPedido", itemPedido);
-		mv.addObject("itempedidos", itemPedidoService.listaAll());
-		return mv;
-	}
-	
 
-	@GetMapping("/delete/{id}")
-	private String delete(@PathVariable("id") Long id) {
-		itemPedidoService.delete(id);
-		return "redirect:/";
-	}
-	
-	@GetMapping("/deletecar/{id}")
-	private String deletecar(@PathVariable("id") Long id) {
-		itemPedidoService.delete(id);
-		return "redirect:/lista";
-	}
-	
-	@GetMapping("/save")
-	public String save(@Valid ItemPedido itemPedido, BindingResult result) {
-		
-		if(result.hasErrors()) {
-			add(itemPedido);
-		}
-		
-		itemPedido.setValorFinal(itemPedido.getValorTotal()+itemPedido.getValorTotal());
-
-		itemPedidoService.cadastrar(itemPedido);
-		
-		return "redirect:/";
-		
-	}
-	
-	@GetMapping("/lista")
-	private ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("itempedido/list");
-		mv.addObject("itempedidos", itemPedidoService.listaAll());
-		return mv;
-	}
 	
 
 

@@ -39,14 +39,31 @@
 <body>
 	<!-- HEADER -->
 	<header>
+		<!-- TOP HEADER -->
+		<div id="top-header">
+			<div class="container">
+				<ul class="header-links pull-right">
+					<li><a href="#"><i class="fa fa-user-o"></i>Usuário</a></li>
+				</ul>
+			</div>
+		</div>
 		<!-- /TOP HEADER -->
 		<!-- MAIN HEADER -->
-		<div th:replace="fragmentos/main-header :: administrador-header"></div>
+		<div th:replace="fragmentos/main-header :: main-header"></div>
 		<!-- /MAIN HEADER -->
 
 
 	</header>
 	<!-- /HEADER -->
+
+	<!-- NAVIGATION  -->
+	<nav id="navigation" th:replace="fragmentos/navigation :: navigation">
+
+		<!-- /container -->
+	</nav>
+	<!-- /NAVIGATION -->
+
+	
 
 	<!-- CORPO -->
 	<div layout:fragment="corpo"></div>
