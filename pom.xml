@@ -60,6 +60,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 
 		
 		<dependency>
@@ -109,6 +110,8 @@
 		</dependency>
 
 
+=======
+>>>>>>> parent of ebb4387... Correção de falhas e adição de relacionamento entre as entidades
 	</dependencies>
 
 

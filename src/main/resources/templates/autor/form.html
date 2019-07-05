@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html lang="pt" layout:decorate="~{layout-administrador}">
 <head>
 <meta charset="utf-8">
@@ -82,3 +83,75 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Cadastrar Autores</title>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div layout:fragment="corpo">
+		<div class="form-group">
+			<a>Cadastro de Autores</a>
+		</div>
+
+		<form method="post" th:object="${autor}" th:action="@{/autor/save}">
+			<div class="form-group">
+				<div class="form-label-group">
+
+					<input id="id" name="id" type="hidden" th:field="*{id}"
+						th:value="*{id}">
+
+					<div class="form-group row">
+						<div class="alert alert-danger alert-dismissible fade show"
+							role="alert" th:if="${#fields.hasAnyErrors()}">
+
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+							<div th:each="detailedError : ${#fields.detailedErrors()}">
+								<strong th:text="${detailedError.message}"> </strong>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+						<div class="form-label-group">
+							<input type="text" id="nome" class="form-control"
+								placeholder="Nome" required="required" th:field="*{nome}">
+							<label for="nome">Nome</label>
+						</div>
+					</div>
+					
+					<div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+						<div class="form-label-group">
+							<input type="email" id="email" class="form-control"
+								placeholder="Email" required="required" th:field="*{email}">
+							<label for="email">Email</label>
+						</div>
+					</div>
+					
+					<div class="form-group" th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
+						<div class="form-label-group">
+							<input type="text" id="cpf" class="form-control"
+								placeholder="CPF" required="required" th:field="*{cpf}">
+							<label for="cpf">CPF</label>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
+		</form>
+	</div>
+
+
+</body>
+</html>
+
+>>>>>>> parent of ebb4387... Correção de falhas e adição de relacionamento entre as entidades
