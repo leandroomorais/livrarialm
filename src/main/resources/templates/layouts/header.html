@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" th:href="@{/img/favicon.png}" />
+
+<title>Livraria LM - Tradição e Qualidade</title>
+
+<!-- Google font -->
+<link
+	th:href="@{https://fonts.googleapis.com/css?family=Montserrat:400,500,700}"
+	rel="stylesheet" />
+
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
+
+<!-- Slick -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/slick.css}" />
+<link type="text/css" rel="stylesheet" th:href="@{/css/slick-theme.css}" />
+
+<!-- nouislider -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/nouislider.min.css}" />
+
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> (84)
+								98156-1303</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Rua do
+								IFRN</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a sec:authorize="isAuthenticated()"
+							th:href="@{/myProfile}"><i class="fa fa-user-o"></i> Minha
+								conta</a></li>
+						<li><a sec:authorize="isAuthenticated()"
+							th:href="@{/logout}"><i></i>Sair</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a class="logo"> <img th:src="@{/img/logo.png}" alt="" />
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search"></div>
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								<div>
+									<a sec:authorize="isAnonymous()" th:href="@{/login}"> <i class="fa fa-sign-in"></i> <span>Entrar</span>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+
+								<!-- Cart -->
+								<div>
+									<a th:href="@{/shoppingCart/cart}"> <i class="fa fa-shopping-cart"></i> 
+									<span>Seu carrinho</span>
+	
+									</a>
+								</div>
+								<!-- /Cart -->
+								
+
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#"> <i class="fa fa-bars"></i> <span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+	</div>
+
+	<div th:fragment="footer">
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Sobre nós</h3>
+								<p>Na Livraria LM você encontra grandes lançamentos, títulos
+									exclusivos, clássicos e novidades da literatura brasileira e
+									mundial, além do maior acervo de livros importados do país.</p>
+							</div>
+						</div>
+						<div class="clearfix visible-xs"></div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							<span class="copyright"> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>
+									document.write(new Date().getFullYear());
+								</script> All rights reserved
+							</span>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+	</div>
+
+	<div th:fragment="body-bottom-scripts">
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+
+		<script th:src="@{/js/scripts.js}"></script>
+
+		<!-- data table -->
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	</div>
+</body>
+</html>

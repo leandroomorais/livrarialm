@@ -1,74 +1,73 @@
-<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
-<head>
-<meta charset="utf-8">
-<title>Livraria LM - Cadastrar Editoras</title>
-</head>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head><meta charset="utf8"/></head>
+<head th:replace="layouts/header-admin :: common-header" />
+
 <body>
-	<!-- SECTION -->
-	<div class="section" layout:fragment="corpo">
-		<!-- container -->
-		<div class="container" align="center">
-			<!-- row -->
-			<div class="row">
+	<div th:replace="layouts/header-admin :: navbar"></div>
+	<!-- container -->
+	<div class="container" align="center">
+		<!-- row -->
+		<div class="row">
 
-				<div class="col-md-12" align="center">
-					<!-- Billing Details -->
-					<div class="billing-details">
-						<div class="section-title">
-							<h3 class="title">Cadastro de Editoras</h3>
-						</div>
-						<div class="col-md-12">
-							<form method="post" th:object="${editora}"
-								th:action="@{/editora/save}">
-
-								<!-- Input responsável por guardar o ID -->
-								<input id="id" name="id" type="hidden" th:field="*{id}"
-									th:value="*{id}">
-
-								<!-- DIV de Alerta de Erros -->
-								<div class="alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
-									<button type="button" class="close" data-dismiss="alert"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<div th:each="detailedError : ${#fields.detailedErrors()}">
-									<strong>Atenção!</strong> <a th:text="${detailedError.message}"></a>
-									</div>
-								</div>
-
-
-								<div class="col-md-6">
-									<div class="form-group"
-										th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
-										<input class="input" type="text" placeholder="Nome"
-											th:field="*{nome}">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group"
-										th:classappend="${#fields.hasErrors('cidade')}? 'has-error'">
-										<input class="input" type="text" placeholder="Cidade"
-											th:field="*{cidade}">
-									</div>
-								</div>
-
-								<div class="col-md-12">
-									<div class="form-group">
-										<button type="submit" class="primary-btn cta-btn">Cadastrar</button>
-									</div>
-								</div>
-
-							</form>
-						</div>
-
+			<div class="col-md-12" align="center">
+				<!-- Billing Details -->
+				<div class="billing-details">
+					<div class="section-title">
+						<h3 class="title">Cadastro de Editoras</h3>
 					</div>
+					<div class="col-md-12">
+						<form method="post" th:object="${editora}"
+							th:action="@{/editora/save}">
+
+							<!-- Input responsável por guardar o ID -->
+							<input id="id" name="id" type="hidden" th:field="*{id}"
+								th:value="*{id}"/>
+
+							<!-- DIV de Alerta de Erros -->
+							<div class="alert alert-danger alert-dismissible" role="alert"
+								th:if="${#fields.hasAnyErrors()}">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<div th:each="detailedError : ${#fields.detailedErrors()}">
+									<strong>Atenção!</strong> <a th:text="${detailedError.message}"></a>
+								</div>
+							</div>
+
+
+							<div class="col-md-6">
+								<div class="form-group"
+									th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+									<input class="input" type="text" placeholder="Nome"
+										th:field="*{nome}"/>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group"
+									th:classappend="${#fields.hasErrors('cidade')}? 'has-error'">
+									<input class="input" type="text" placeholder="Cidade"
+										th:field="*{cidade}"/>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									<button type="submit" class="primary-btn cta-btn">Cadastrar</button>
+								</div>
+							</div>
+
+						</form>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- /Billing Details -->
-
+	<div th:replace="layouts/header-admin :: footer"></div>
+	<div th:replace="layouts/header-admin :: body-bottom-scripts"></div>
 </body>
 </html>
+

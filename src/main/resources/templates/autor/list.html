@@ -1,72 +1,73 @@
-<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head><meta charset="utf8"/></head>
 <head>
-<meta charset="utf-8">
-<title>Livraria LM - Autores</title>
+<meta charset="utf-8"/>
 </head>
+<head th:replace="layouts/header-admin :: common-header" />
+
 <body>
-	<div class="section" layout:fragment="corpo">
-		<!-- container -->
-		<div class="container" align="center">
-			<!-- row -->
-			<div class="row">
+	<div th:replace="layouts/header-admin :: navbar"></div>
 
-				<div  align="center">
-					<!-- Billing Details -->
-					<div class="billing-details">
-						<div class="section-title">
-							<h3 class="title">Lista de Autores</h3>
-						</div>
-						<!-- DIV de Alerta de Sucessos -->
-						<div class="alert alert-success alert-dismissible" role="alert"
-							th:if="${success}">
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+	<div class="container" align="center">
+		<!-- row -->
+		<div class="row">
 
-							<strong>Sucesso!</strong> <a th:text="${success}"></a>
+			<div align="center">
+				<!-- Billing Details -->
+				<div class="billing-details">
+					<div class="section-title">
+						<h3 class="title">Lista de Autores</h3>
+					</div>
+					<!-- DIV de Alerta de Sucessos -->
+					<div class="alert alert-success alert-dismissible" role="alert"
+						th:if="${success}">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 
-						</div>
-						<div class="col-md-10">
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th scope="col">ID</th>
-										<th scope="col">Nome</th>
-										<th scope="col">Email</th>
-										<th scope="col">CPF</th>
-										<th scope="col">Ações</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="autor : ${autores}">
-										<td scope="row" th:text="${autor.id}"></td>
-										<td th:text="${autor.nome}"></td>
-										<td th:text="${autor.email}"></td>
-										<td th:text="${autor.cpf}"></td>
-										<td><a class="btn btn-primary"
-											th:href="@{/autor/edit/{id} (id=${autor.id})}">Editar</a> <a
-											class="btn btn-danger"
-											th:href="@{/autor/delete/{id} (id=${autor.id})}">Excluir</a></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						<strong>Sucesso!</strong> <a th:text="${success}"></a>
 
-						<div class="col-md-2" align="center">
-							<hr>
-							<a class="primary-btn cta-btn" th:href="@{/autor/add}"><i class="fa fa-plus"> Novo</i></a>
-						</div>
+					</div>
+					<div class="col-md-10">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Nome</th>
+									<th scope="col">Email</th>
+									<th scope="col">CPF</th>
+									<th scope="col">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="autor : ${autores}">
+									<td scope="row" th:text="${autor.id}"></td>
+									<td th:text="${autor.nome}"></td>
+									<td th:text="${autor.email}"></td>
+									<td th:text="${autor.cpf}"></td>
+									<td><a class="btn btn-primary"
+										th:href="@{/autor/edit/{id} (id=${autor.id})}">Editar</a> <a
+										class="btn btn-danger"
+										th:href="@{/autor/delete/{id} (id=${autor.id})}">Excluir</a></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 
+					<div class="col-md-2" align="center">
+						<hr/>
+						<a class="primary-btn cta-btn" th:href="@{/autor/add}"><i
+							class="fa fa-plus"> Novo</i></a>
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
 
-
-
-
-
+	<div th:replace="layouts/header-admin :: footer"></div>
+	<div th:replace="layouts/header-admin :: body-bottom-scripts"></div>
 </body>
 </html>

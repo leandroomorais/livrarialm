@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+<meta charset="utf-8" />
+</head>
+<head th:replace="layouts/header :: common-header" />
+
+<body>
+	<div th:replace="layouts/header :: navbar"></div>
+	<!-- DIV de Alerta de Sucessos -->
+	<div class="col--md-10">
+	<div class="alert alert-success alert-dismissible" role="alert" th:if="${success}">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+
+		<strong>Sucesso!</strong> <a th:text="${success}"></a>
+	</div>
+	</div>
+	
+	<!-- DIV de Alerta de Erros -->
+	<div class="col--md-10">
+	<div class="alert alert-success alert-dismissible" role="alert" th:if="${erro}">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+
+		<strong>Sucesso!</strong> <a th:text="${erro}"></a>
+	</div>
+	</div>
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- Product main img -->
+				<div class="col-md-5 col-md-push-2">
+					<div id="product-main-img">
+						<div class="product-preview">
+							<img th:src="${livro.url}" />
+						</div>
+
+					</div>
+				</div>
+				<!-- /Product main img -->
+
+				<!-- Product thumb imgs -->
+				<div class="col-md-2  col-md-pull-5">
+					<div id="product-imgs">
+						<div class="product-preview">
+							<img th:src="${livro.url}" />
+						</div>
+
+					</div>
+				</div>
+				<!-- /Product thumb imgs -->
+
+
+				<form th:action="@{/shoppingCart/addItem}" method="post">
+					<input hidden="hidden" th:field="*{livro.id}" />
+					<!-- Product details -->
+					<div class="col-md-5">
+						<div class="product-details">
+							<h2 class="product-name">
+								<span th:text="${livro.titulo}"></span>
+							</h2>
+							<div></div>
+							<div>
+								<h3 class="product-price">
+									<strong>R$ </strong><span th:text="${livro.preco}"></span>
+								</h3>
+								<span th:if="*{livro.inStockNumber&gt;10}"
+									class="product-available">Em estoque</span> <span
+									th:if="*{livro.inStockNumber&lt;10 and livro.inStockNumber&gt;0}"
+									class="product-available">Somente <span
+									th:text="${livro.inStockNumber}"></span> disponíveis
+								</span>
+							</div>
+							<p th:text="${livro.sinopse}"></p>
+
+							<div class="add-to-cart">
+								<div class="qty-label">
+									Qtd
+									<div class="input-number">
+										<select name="qty">
+											<option th:each="qty : ${qtyList}" th:value="${qty}"
+												th:text="${qty}"></option>
+										</select>
+									</div>
+								</div>
+								<button class="add-to-cart-btn">
+									<i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho
+								</button>
+							</div>
+
+							<ul class="product-btns">
+								<li><a href="#"><i class="fa fa-heart-o"></i>Adicionar
+										aos desejos</a></li>
+							</ul>
+
+						</div>
+					</div>
+					<!-- /Product details -->
+				</form>
+
+				<!-- Product tab -->
+				<div class="col-md-12">
+					<div id="product-tab">
+						<!-- product tab nav -->
+						<ul class="tab-nav">
+							<li class="active"><a data-toggle="tab" href="#tab1">Sinopse</a></li>
+						</ul>
+						<!-- /product tab nav -->
+
+						<!-- product tab content -->
+						<div class="tab-content">
+							<!-- tab1  -->
+							<div id="tab1" class="tab-pane fade in active">
+								<div class="row">
+									<div class="col-md-12">
+										<p th:text="${livro.sinopse}"></p>
+									</div>
+								</div>
+							</div>
+							<!-- /tab1  -->
+
+						</div>
+						<!-- /product tab content  -->
+					</div>
+				</div>
+				<!-- /product tab -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+	<div th:replace="layouts/header :: footer"></div>
+	<div th:replace="layouts/header :: body-bottom-scripts"></div>
+</body>
+</html>
+

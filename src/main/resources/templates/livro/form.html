@@ -1,9 +1,12 @@
-<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
 <head>
-<meta charset="utf-8">
-<title>Livraria LM - Cadastrar Livros</title>
+<meta charset="utf8" />
 </head>
+<head th:replace="layouts/header-admin :: common-header" />
+
 <body>
+	<div th:replace="layouts/header-admin :: navbar"></div>
 	<!-- SECTION -->
 	<div class="section" layout:fragment="corpo">
 		<!-- container -->
@@ -23,7 +26,7 @@
 
 								<!-- Input responsável por guardar o ID -->
 								<input id="id" name="id" type="hidden" th:field="*{id}"
-									th:value="*{id}">
+									th:value="*{id}" />
 
 								<!-- DIV de Alerta de Erros -->
 								<div class="alert alert-danger alert-dismissible" role="alert"
@@ -42,16 +45,18 @@
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
-										<input class="input" type="text" placeholder="Titulo"
-											th:field="*{titulo}">
+										<label>Titulo</label>
+										<input class="input" name="titulo" type="text" placeholder="Titulo"
+											th:field="*{titulo}" />
 									</div>
 								</div>
-								
+
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('url')}? 'has-error'">
-										<input class="input" type="text" placeholder="URL Imagem do Livro"
-											th:field="*{url}">
+										<label>Imagem</label>
+										<input class="input" type="text"
+											placeholder="URL Imagem do Livro" th:field="*{url}" />
 									</div>
 								</div>
 
@@ -59,15 +64,19 @@
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
+										<label>Ano de publicação</label>
 										<input class="input" type="datetime" placeholder="Ano"
-											th:field="*{ano}">
+											th:field="*{ano}" />
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
-										<textarea class="input" rows="2" cols="50" placeholder="Digite a Sinopse do Livro aqui" th:field="*{sinopse}"></textarea>
+										<label>Sinopse</label>
+										<textarea class="input" rows="2" cols="50"
+											placeholder="Digite a Sinopse do Livro aqui"
+											th:field="*{sinopse}"></textarea>
 										<!-- <input class="input" placeholder="Sinopse" type="text"
 											th:field="*{sinopse}"> -->
 									</div>
@@ -76,31 +85,42 @@
 								<div class="col-md-6">
 									<div class="form-group"
 										th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
+										<label>ISBN</label>
 										<input class="input" placeholder="ISBN" type="text"
-											th:field="*{isbn}">
+											th:field="*{isbn}" />
 									</div>
 								</div>
 
 								<div class="col-md-6">
-									<div class="form-group"
-										th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
+									<div class="form-group">
+										<label>Edição</label>
 										<input class="input" placeholder="Edição" type="text"
-											th:field="*{edicao}">
+											th:field="*{edicao}" />
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
+										<label>Peso</label>
 										<input class="input" placeholder="Peso em KG" type="text"
-											required="required" th:field="*{peso}">
+											required="required" th:field="*{peso}" />
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
+										<label>Preço</label>
 										<input class="input" placeholder="Preço em R$" type="text"
 											required="required" th:field="*{preco}" name="valor"
-											onKeyPress="return(moeda(this,'.',',',event))">
+											onKeyPress="return(moeda(this,'.',',',event))"/>
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Quantidade / Estoque</label>
+										<input class="input" placeholder="Quantidade para estoque" type="text"
+											required="required" th:field="*{inStockNumber}" name="number"/>
 									</div>
 								</div>
 
@@ -132,8 +152,8 @@
 										<div class="scrollmenu">
 											<div th:each="autor : ${autores}">
 												<input type="checkbox" th:field="*{autor}"
-													th:value="${autor.id}"><span th:text="${'  '}"></span><span
-													th:text="${autor.nome}"></span><br>
+													th:value="${autor.id}" /><span th:text="${'  '}"></span><span
+													th:text="${autor.nome}"></span>
 											</div>
 
 										</div>
@@ -154,7 +174,7 @@
 		</div>
 	</div>
 
-	<!-- /Billing Details -->
-
+	<div th:replace="layouts/header-admin :: footer"></div>
+	<div th:replace="layouts/header-admin :: body-bottom-scripts"></div>
 </body>
 </html>

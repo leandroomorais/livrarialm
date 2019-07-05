@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+<meta charset="utf-8" />
+</head>
+<head th:replace="layouts/header :: common-header" />
+
+<body>
+	<div th:replace="layouts/header :: navbar"></div>
+	<div class="container">
+		<div class="section-title">
+			<h3 class="title">Seu carrinho de compras</h3>
+		</div>
+
+		<div class="row" style="margin-top: 10px;">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="row">
+						<div class="col-xs-8 ">
+							<h4 style="margin-left: 70px;">Livros</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Preço</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Quantidade</h4>
+						</div>
+					</div>
+
+					<!--**************** display products in cart ****************-->
+
+					<div class="row" th:each="cartItem : ${cartItemList}">
+						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+							<hr />
+							<div class="col-xs-2">
+								<a th:href="@{bookDetail(id=${cartItem.livro.id})}"> <img
+									style="width: 70px;"
+									class="img-responsive shelf-book center-block"
+									th:src="${cartItem.livro.url}" />
+								</a>
+							</div>
+							<div class="col-xs-6">
+								<div style="margin-left: 50px;">
+									<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}"><i
+										class="fa fa-trash"></i>Remover</a>
+								</div>
+							</div>
+
+							<div class="col-xs-2">
+								<h5 style="color: #db3208; font-size: large;">
+									R$ <span th:text="${cartItem.livro.preco}"></span>
+								</h5>
+							</div>
+
+							<div class="col-xs-2">
+								 <input	th:id="${cartItem.id}" th:name="qty"
+									th:disabled="${cartItem.livro.inStockNumber==0}"
+									class="form-control cartItemQty" th:value="${cartItem.qtd}" />
+							</div>
+
+						</form>
+					</div>
+
+					<div class="row">
+						<hr />
+						<h4 class="col-xs-12 text-right">
+							<strong style="font-size: large;">Total: (<span
+								th:text="${#lists.size(cartItemList)}"></span> itens):
+							</strong> <span style="color: #db3208; font-szie: large;">R$ <span
+								th:text="${shoppingCart.totalGeral}"></span></span>
+						</h4>
+					</div>
+
+					<div class="col-xs-6 text-left">
+						<a class="primary-btn cta-btn" th:href="@{/}">Continuar
+							comprando</a>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a class="primary-btn cta-btn"
+							th:href="@{/checkout(id=${shoppingCart.id})}">Confirmar</a>
+					</div>
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of container -->
+
+	<div th:replace="layouts/header :: footer"></div>
+	<div th:replace="layouts/header :: body-bottom-scripts"></div>
+</body>
+</html>
+

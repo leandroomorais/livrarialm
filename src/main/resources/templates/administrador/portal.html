@@ -1,8 +1,14 @@
-<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
-<head>
-<meta charset="utf-8">
-<title>Livraria LM - Administrador</title>
-</head>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="layouts/header-admin :: common-header" />
+
 <body>
+	<div th:replace="layouts/header-admin :: navbar"></div>
+
+	
+	
+
+	<div th:replace="layouts/header-admin :: footer"></div>
+	<div th:replace="layouts/header-admin :: body-bottom-scripts"></div>
 </body>
 </html>
