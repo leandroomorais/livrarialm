@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<html lang="pt" layout:decorate="~{layout-administrador}">
+<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
 <head>
 <meta charset="utf-8">
 <title>Livraria LM - Cadastrar Livros</title>
@@ -20,7 +19,7 @@
 						</div>
 						<div class="col-md-12">
 							<form method="post" th:object="${livro}"
-								th:action="@{/livro/save}" enctype="multipart/form-data">
+								th:action="@{/livro/save}">
 
 								<!-- Input responsável por guardar o ID -->
 								<input id="id" name="id" type="hidden" th:field="*{id}"
@@ -141,8 +140,6 @@
 									</div>
 								</div>
 
-
-
 								<div class="col-md-12">
 									<div class="form-group">
 										<button type="submit" class="primary-btn cta-btn">Cadastrar</button>
@@ -161,99 +158,3 @@
 
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
-<head>
-<title>Cadastrar Livros</title>
-<meta charset="UTF-8" />
-</head>
-<body>
-	<div layout:fragment="corpo">
-		<div class="form-group">
-			<a>Cadastro de Livros</a>
-		</div>
-
-		<form method="post" th:object="${livro}" th:action="@{/livro/save}">
-			<div class="form-group">
-				<div class="form-label-group">
-
-					<input id="id" name="id" type="hidden" th:field="*{id}"
-						th:value="*{id}">
-
-					<div class="form-group row">
-						<div class="alert alert-danger alert-dismissible fade show"
-							role="alert" th:if="${#fields.hasAnyErrors()}">
-
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-
-							<div th:each="detailedError : ${#fields.detailedErrors()}">
-								<strong th:text="${detailedError.message}"> </strong>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group" th:classappend="${#fields.hasErrors('titulo')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="titulo" class="form-control"
-								placeholder="Titulo" required="required" th:field="*{titulo}">
-							<label for="titulo">Titulo</label>
-						</div>
-					</div>
-
-					<div class="form-group" th:classappend="${#fields.hasErrors('ano')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="ano" class="form-control"
-								placeholder="Ano" required="required" th:field="*{ano}">
-							<label for="ano">Ano</label>
-						</div>
-					</div>
-					<div class="form-group" th:classappend="${#fields.hasErrors('sinopse')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="sinopse" class="form-control"
-								placeholder="Sinopse" required="required" th:field="*{sinopse}">
-							<label for="sinopse">Sinopse</label>
-						</div>
-					</div>
-
-					<div class="form-group" th:classappend="${#fields.hasErrors('isbn')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="isbn" class="form-control"
-								placeholder="ISBN" required="required" th:field="*{isbn}">
-							<label for="isbn">ISBN</label>
-						</div>
-					</div>
-
-					<div class="form-group" th:classappend="${#fields.hasErrors('edicao')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="number" id="edicao" class="form-control"
-								placeholder="Edição" required="required" th:field="*{edicao}">
-							<label for="edicao">Edição</label>
-						</div>
-					</div>
-
-					<div class="form-group" th:classappend="${#fields.hasErrors('peso')}? 'has-error'">
-						<div class="form-label-group">
-							<input type="text" id="peso" class="form-control"
-								placeholder="Peso" required="required" th:field="*{peso}">
-							<label for="peso">Peso</label>
-						</div>
-					</div>
-
-
-				</div>
-			</div>
-
-			<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
-		</form>
-	</div>
-
-
-</body>
-</html>
-
->>>>>>> parent of ebb4387... Correção de falhas e adição de relacionamento entre as entidades

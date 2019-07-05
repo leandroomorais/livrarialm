@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: livrarialm
+Implementation-Title: livrarialmfinal
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: leand
-Implementation-Vendor-Id: br.com.livrarialm
+Implementation-Vendor-Id: com.dsc
 Build-Jdk: 1.8.0_201
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/livrarialm
+ ot-starter-parent/livrarialmfinal
 Created-By: Maven Integration for Eclipse
 

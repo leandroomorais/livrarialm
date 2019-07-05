@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" th:href="@{/img/favicon.png}">
+<!-- Google font -->
+<link
+	th:href="@{https://fonts.googleapis.com/css?family=Montserrat:400,500,700}"
+	rel="stylesheet">
+
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
+
+<!-- Slick -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/slick.css}" />
+<link type="text/css" rel="stylesheet" th:href="@{/css/slick-theme.css}" />
+
+<!-- nouislider -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/nouislider.min.css}" />
+
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+</head>
+<body>
+	<!-- HEADER -->
+	<header>
+		<!-- TOP HEADER -->
+		<div id="top-header">
+			<div class="container">
+				<ul class="header-links pull-right">
+					<li><a href="#"><i class="fa fa-user-o"></i>Usuário</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /TOP HEADER -->
+		<!-- MAIN HEADER -->
+		<div th:replace="fragmentos/main-header :: administrador-header"></div>
+		<!-- /MAIN HEADER -->
+
+
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<nav id="navigation"
+		th:replace="fragmentos/navigation :: administrador-navigation">
+
+		<!-- /container -->
+	</nav>
+	<!-- /NAVIGATION -->
+	<!-- BREADCRUMB -->
+	<div layout:fragment="breadcum"></div>
+	<!-- /BREADCRUMB -->
+
+	<!-- CORPO -->
+	<div layout:fragment="corpo"></div>
+	<!-- /CORPO -->
+
+
+
+	<!-- NEWSLETTER -->
+	<div id="newsletter" class="section">
+		<!-- container -->
+		<div class="container"></div>
+		<!-- /container -->
+	</div>
+	<!-- /NEWSLETTER -->
+
+
+
+
+	<!-- jQuery Plugins -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/slick.min.js}"></script>
+	<script th:src="@{/js/nouislider.min.js}"></script>
+	<script th:src="@{/js/jquery.zoom.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/datatable-demo.js}"></script>
+	<!-- Mascara CPF -->
+	<script type="text/javascript" th:src="@{/js/jquery-1.2.6.pack.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/js/jquery.maskedinput-1.1.4.pack.js}" /></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#cpf").mask("999.999.999-99");
+		});
+	</script>
+	
+	<script type="text/javascript">   
+function moeda(a, e, r, t) {
+    let n = ""
+      , h = j = 0
+      , u = tamanho2 = 0
+      , l = ajd2 = ""
+      , o = window.Event ? t.which : t.keyCode;
+    if (13 == o || 8 == o)
+        return !0;
+    if (n = String.fromCharCode(o),
+    -1 == "0123456789".indexOf(n))
+        return !1;
+    for (u = a.value.length,
+    h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
+        ;
+    for (l = ""; h < u; h++)
+        -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+    if (l += n,
+    0 == (u = l.length) && (a.value = ""),
+    1 == u && (a.value = "0" + r + "0" + l),
+    2 == u && (a.value = "0" + r + l),
+    u > 2) {
+        for (ajd2 = "",
+        j = 0,
+        h = u - 3; h >= 0; h--)
+            3 == j && (ajd2 += e,
+            j = 0),
+            ajd2 += l.charAt(h),
+            j++;
+        for (a.value = "",
+        tamanho2 = ajd2.length,
+        h = tamanho2 - 1; h >= 0; h--)
+            a.value += ajd2.charAt(h);
+        a.value += r + l.substr(u - 2, u)
+    }
+    return !1
+}
+ </script>
+</body>
+</html>

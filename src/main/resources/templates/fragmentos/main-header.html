@@ -52,26 +52,34 @@
 											</h3>
 											<th:block th:each="livro : ${itempedido.livro}">
 												<h4 class="product-price">
-													R$ <span class="qty" id="preco" th:text=${livro.preco}></span>
+													R$ <span class="item-total" id="value" th:text=${livro.preco}></span>
 												</h4>
 											</th:block>
 											<div class="delete">
 												<a class="branco"
-													th:href="@{/delete/{id} (id=${itempedido.id})}">x</a></i>
+													th:href="@{/item-pedido/delete/{id} (id=${itempedido.id})}">x</a></i>
 											</div>
 										</div>
 
 									</div>
 								</div>
 
+
+
 							</div>
 
+							
 							<div class="cart-summary">
-								<small></small>
+								<h6>
+									Qtd Itens: <span th:text="${#lists.size(itempedidos)}"></span>
+								</h6>
+								
+								<h5>
+									TOTAL: R$<span th:text="${livro.preco}"></span>
+								</h5>
 							</div>
-
 							<div class="cart-btns">
-								<a th:href="@{/lista}">Ver Carrinho</a><a><i
+								<a th:href="@{/item-pedido/lista}">Ver Carrinho</a><a><i
 									class="fa fa-shopping-cart"></i></a>
 							</div>
 						</div>
@@ -80,12 +88,10 @@
 
 					<!-- Wishlist -->
 					<div>
-						<a href="#"> <i class="fa fa-heart-o"></i> <span>Desejos</span>
-							<div class="qty">2</div>
+						<a th:href="@{/entrar}"> <i class="fa fa-heart"></i>
 						</a>
 					</div>
 					<!-- /Wishlist -->
-					
 
 					<!-- Menu Toogle -->
 					<div class="menu-toggle">

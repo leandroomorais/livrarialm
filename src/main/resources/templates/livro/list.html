@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<html lang="pt" layout:decorate="~{layout-administrador}">
+<html lang="pt" layout:decorate="~{layouts/layout-administrador}">
 <head>
 <meta charset="utf-8">
 <title>Livraria LM - Livros</title>
@@ -72,59 +71,4 @@
 
 
 </body>
-=======
-<!DOCTYPE html>
-<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
-<head>
-<title>Spring-Boot Básico</title>
-<meta charset="UTF-8" />
-</head>
-<body>
-	<div layout:fragment="corpo">
-		<div class="card mb-3">
-			<div class="card-header">
-				<i class="fas fa-table"></i> Data Table Example
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Titulo</th>
-								<th>Ano</th>
-								<th>ISBN</th>
-								<th>Edição</th>
-								<th>Peso</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-				
-						<tbody>
-							<tr th:each="livro : ${livros}">
-								<td th:text="${livro.id}"></td>
-								<td th:text="${livro.titulo}"></td>
-								<td th:text="${livro.ano}"></td>
-								<td th:text="${livro.isbn}"></td>
-								<td th:text="${livro.edicao}"></td>
-								<td th:text="${livro.peso}"></td>
-								<td><div class="btn-group pull-right">
-									   		<a class="btn btn-sm btn-primary" th:href="@{/livro/edit/{id}(id=${livro.id})}" >Editar</a>
-									   		<a class="delete btn btn-sm btn-danger" th:href="@{/livro/delete/{id}(id=${livro.id})}">Excluir</a>
-									   </div></td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-		
-		</div>
-	</div>
-
-
-</body>
->>>>>>> parent of ebb4387... Correção de falhas e adição de relacionamento entre as entidades
 </html>
