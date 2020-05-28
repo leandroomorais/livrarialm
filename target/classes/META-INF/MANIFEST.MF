@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: leand
+Build-Jdk: 11.0.6
 Implementation-Title: Bookstore
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: leand
 Implementation-Vendor-Id: com.bookstore
-Build-Jdk: 1.8.0_201
+Implementation-Vendor: Pivotal Software, Inc.
 Implementation-URL: http://projects.spring.io/spring-boot/bookstore/
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
